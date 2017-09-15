@@ -1,0 +1,2 @@
+2017-09-15 23:03:06.576046: Loading credentials from: C:\Users\Lukas\.credentials\sheets.googleapis.com-fogbugz-auto-weeklog.json
+2017-09-15 23:03:08.193683: Loading credentials from: C:\Users\Lukas\.credentials\sheets.googleapis.com-fogbugz-auto-weeklog.json

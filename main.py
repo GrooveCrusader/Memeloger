@@ -17,8 +17,8 @@ from oauth2client.file import Storage
 
 from bs4 import BeautifulSoup
 
-#import weeklog_utility as wutil
-#import weeklog_requests as wrequests
+import weeklog_utility as wutil
+import weeklog_requests as wrequests
 
 
 try:
@@ -32,6 +32,8 @@ DISCOVERY_URL = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'FogBugz auto weeklog'
 
+
+LOG_FILE = 'log.txt'
 
 def get_credentials():
     """
@@ -61,6 +63,17 @@ def get_credentials():
         llog('Loading credentials from: ' + credential_path)
     return credentials
 
+
+def llog(text: str, to_console=True): # Connection loss proof
+    '''
+    Logs the string provided to the file
+    Logs the string provided to the console if toConsole is True
+    '''
+    time_str = str(wutil.get_current_time())
+    with codecs.open(LOG_FILE, 'a', encoding='utf-8') as file:
+        file.write(time_str + ': ' + text + '\n')
+    if to_console:
+        print(time_str + ': ' + text)
 
 def main():
     get_credentials()
